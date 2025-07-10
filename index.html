@@ -6,13 +6,33 @@
 </head>
 <body>
   <h2>Надіслати дані</h2>
+  
   <form id="dataForm">
     <label>Ім’я: <input type="text" name="name" required></label><br>
-    <label>Email: <input type="email" name="email" required></label><br>
-    <label>Повідомлення:<br><textarea name="message" required></textarea></label><br>
+  
+    <label>Число 1: <input type="number" name="text1" id="text1" required></label><br>
+    <label>Число 2: <input type="number" name="message" id="message" required></label><br>
+  
+    <label>Сума:<input type="number" id="sum" readonly></label><br>
+  
     <button type="submit">Надіслати</button>
   </form>
+  
+<script>
+  const text1Input = document.getElementById('text1');
+  const messageInput = document.getElementById('message');
+  const sumOutput = document.getElementById('sum');
 
+  function updateSum() {
+    const val1 = parseFloat(text1Input.value) || 0;
+    const val2 = parseFloat(messageInput.value) || 0;
+    sumOutput.value = val1 + val2;
+  }
+
+  text1Input.addEventListener('input', updateSum);
+  messageInput.addEventListener('input', updateSum);
+</script>
+  
 <script>
   document.querySelector('form').addEventListener('submit', async (e) => {
     e.preventDefault();
