@@ -6,18 +6,18 @@
 </head>
 <body>
   <h2>Надіслати дані</h2>
-  
+
   <form id="dataForm">
     <label>Ім’я: <input type="text" name="name" required></label><br>
-  
+
     <label>Число 1: <input type="number" name="text1" id="text1" required></label><br>
     <label>Число 2: <input type="number" name="message" id="message" required></label><br>
-  
+
     <label>Сума:<input type="number" id="sum" readonly></label><br>
-  
+
     <button type="submit">Надіслати</button>
   </form>
-  
+
 <script>
   const text1Input = document.getElementById('text1');
   const messageInput = document.getElementById('message');
@@ -32,15 +32,17 @@
   text1Input.addEventListener('input', updateSum);
   messageInput.addEventListener('input', updateSum);
 </script>
-  
+
 <script>
   document.querySelector('form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = {
-      name: document.querySelector('input[name="name"]').value,
-      email: document.querySelector('input[name="email"]').value,
-      message: document.querySelector('textarea[name="message"]').value
-    };
+    
+    const name = document.querySelector('input[name="name"]').value;
+    const text1 = parseFloat(document.querySelector('input[name="text1"]').value) || 0;
+    const message = parseFloat(document.querySelector('input[name="message"]').value) || 0;
+    const sum = text1 + message;
+
+    const data = { name, text1, message, sum };
 
     try {
       await fetch('https://script.google.com/macros/s/AKfycbwIwg-KCJSYDp3miNTsJFEqF_FeLOVEthxwCJ3amB6uQvEkLdSALS0h4DCgj4W3nSyk/exec', {
