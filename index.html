@@ -8,7 +8,7 @@
   <h2>Надіслати дані</h2>
   <form id="dataForm">
     <label>Ім’я: <input type="text" name="name" required></label><br>
-    <label>Email: <input type="email" name="email" required></label><br>
+    <label>Текст: <input type="text" name="text" required></label><br>
     <label>Повідомлення:<br><textarea name="message" required></textarea></label><br>
     <button type="submit">Надіслати</button>
   </form>
@@ -18,7 +18,7 @@
     e.preventDefault();
     const data = {
       name: document.querySelector('input[name="name"]').value,
-      email: document.querySelector('input[name="email"]').value,
+      text: document.querySelector('input[name="text"]').value,
       message: document.querySelector('textarea[name="message"]').value
     };
 
